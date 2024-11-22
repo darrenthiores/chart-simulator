@@ -12,7 +12,7 @@ export default function Home() {
 
   const data = {
     labels: ads.map((ad) => {
-      return ad.ad_id;
+      return ad.created_time;
     }),
     datasets: [
       {
@@ -49,17 +49,41 @@ export default function Home() {
       },
     ],
   };
+
+  const data2 = {
+    labels: ads.map((ad) => {
+      return ad.created_time;
+    }),
+    datasets: [
+      {
+        data: ads.map((ad) => {
+          return Number(ad.impressions);
+        }),
+        label: "Impressions",
+        borderColor: "rgb(62,149,205)",
+        backgroundColor: "rgb(62,149,205,0.1)",
+      }
+    ],
+  };
+
   useEffect(() => {
     var ctx = document.getElementById("myChart") as HTMLCanvasElement;
     var myChart = new Chart(ctx, {
       type: "line",
       data: data,
     });
+
+    var ctx = document.getElementById("myChart-2") as HTMLCanvasElement;
+    var myChart = new Chart(ctx, {
+      type: "line",
+      data: data2,
+    });
   }, []);
 
   return (
     <div className="w-1/2">
       <canvas id="myChart" className="w-full"></canvas>
+      <canvas id="myChart-2" className="w-full"></canvas>
     </div>
   );
 }

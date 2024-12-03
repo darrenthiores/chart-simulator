@@ -18,3 +18,20 @@ export interface Ads {
     cost_per_action_type_link_click: string;
     cost_per_action_type_post_engagement: string
 }
+
+export type FbAdsData = {
+    data: FbAds[]
+}
+
+export type FbAds = {
+    date: string;
+    impressions: string;
+    reach: string;
+    spend: string;
+    website_ctr_link_click: number;
+    unique_clicks: number;
+    actions_post_engagement: string;
+    cost_per_unique_action_type_link_click: number;
+    cost_per_action_type_post_engagement: number;
+    start_date: string
+}
